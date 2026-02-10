@@ -17,7 +17,6 @@ const navCols = [
     title: "Explore",
     links: [
       { label: "Books", href: "/books" },
-      { label: "Reviews", href: "/reviews" },
       { label: "About", href: "/about" },
     ],
   },
@@ -25,7 +24,7 @@ const navCols = [
     title: "Services",
     links: [
       { label: "Cybersecurity", href: "/audit-findings-on-cybersecurity" },
-      { label: "Software", href: "/software" },
+      { label: "Software Store", href: "/software-store" },
       { label: "Contact", href: "/contact" },
     ],
   },
