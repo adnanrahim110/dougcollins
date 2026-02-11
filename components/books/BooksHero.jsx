@@ -27,7 +27,7 @@ const stats = [
 
 export default function BooksHero() {
   return (
-    <section className="relative bg-ink pt-36 pb-24 md:pt-44 md:pb-32 lg:pt-48 lg:pb-40 overflow-hidden">
+    <section className="relative bg-ink pt-36 pb-24 md:pt-44 md:pb-32 lg:pt-48 lg:pb-40">
       <div className="grain absolute inset-0 pointer-events-none" />
 
       <div className="absolute top-1/3 left-1/4 w-125 h-125 rounded-full bg-primary-500/6 blur-[180px]" />
@@ -60,7 +60,7 @@ export default function BooksHero() {
               line="both"
               lineWidth={40}
             >
-              The Collection
+              The Edition
             </Subtitle>
           </BlurReveal>
 
@@ -73,17 +73,17 @@ export default function BooksHero() {
               align="center"
               className="mt-6"
             >
-              Every Story,{" "}
+              Every Signal,{" "}
               <Title.Gradient underline underlineDelay={1}>
-                Curated
+                Decoded
               </Title.Gradient>
             </Title>
           </BlurReveal>
 
           <BlurReveal delay={0.2}>
             <p className="mt-6 text-fog/70 text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-light">
-              Speculative fiction at the intersection of science, technology,
-              and the boundaries of human consciousness.
+              In his fiction, Collins proves that the boundaries of science and
+              philosophy exist only until imagination redraws them.
             </p>
           </BlurReveal>
         </div>

@@ -212,23 +212,24 @@ export default function FeaturedBooks() {
           <div className="max-w-2xl space-y-4">
             <BlurReveal delay={0}>
               <Subtitle tone="cream" line lineWidth={40}>
-                The Collection
+                THE EDITION
               </Subtitle>
             </BlurReveal>
 
             <BlurReveal delay={1}>
               <Title size="xl" tone="cream">
-                Featured{" "}
+                Fictions of{" "}
                 <Title.Gradient variant="primary" underline>
-                  Works
+                  Thought
                 </Title.Gradient>
               </Title>
             </BlurReveal>
 
             <BlurReveal delay={2}>
               <p className="text-ash text-base md:text-lg leading-[1.8] max-w-xl">
-                Each novel is a meticulously crafted exploration of the
-                questions that define our technological age.
+                Each novel is an intersection of science, philosophy, and the
+                human experience, where imagination meets consequence and ideas
+                take shape through compelling fiction.
               </p>
             </BlurReveal>
           </div>

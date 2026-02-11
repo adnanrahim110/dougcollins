@@ -15,6 +15,7 @@ export const Card = ({
   title: titleProp,
   price: priceProp,
   image: imageProp,
+  backImage: backImageProp,
   description: descProp,
   category: catProp,
   series: seriesProp,
@@ -25,6 +26,7 @@ export const Card = ({
   const title = book?.title ?? titleProp;
   const price = book?.price ?? priceProp;
   const image = book?.image ?? imageProp;
+  const backImage = book?.backImage ?? backImageProp;
   const description = book?.description ?? descProp;
   const category = book?.category ?? catProp;
   const series = book?.series ?? seriesProp;
@@ -73,12 +75,30 @@ export const Card = ({
         }}
       >
         <div className="aspect-book relative overflow-hidden bg-charcoal">
-          {image ? (
+          {image && backImage ? (
+            <>
+              <Image
+                src={image}
+                alt={`${title} front cover`}
+                fill
+                className="object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+                sizes="(max-width: 768px) 100vw, 360px"
+              />
+              <Image
+                src={backImage}
+                alt={`${title} back cover`}
+                fill
+                className="object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                sizes="(max-width: 768px) 100vw, 360px"
+              />
+            </>
+          ) : image ? (
             <Image
               src={image}
               alt={title}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 360px"
             />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-linear-to-br from-slate to-charcoal p-6">
@@ -103,11 +123,16 @@ export const Card = ({
           {!isComingSoon && (
             <motion.button
               onClick={handleAddToCart}
-              className="absolute bottom-3 right-3 p-3 rounded-full bg-primary text-primary-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary-600 shadow-lg"
+              className="absolute bottom-3 right-3 flex items-center h-10 group/cart"
               whileTap={{ scale: 0.9 }}
               aria-label="Add to cart"
             >
-              <ShoppingBag size={16} />
+              <span className="inline-flex items-center h-10 px-3 rounded-full bg-primary text-primary-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover/cart:bg-primary-600 shadow-lg">
+                Add to cart
+              </span>
+              <span className="inline-flex items-center h-10 px-3 rounded-full bg-primary text-primary-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover/cart:bg-primary-600 shadow-lg">
+                <ShoppingBag size={16} />
+              </span>
             </motion.button>
           )}
         </div>

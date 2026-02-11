@@ -20,7 +20,7 @@ export default function BookDetailSynopsis({ book }) {
 
           <BlurReveal delay={1}>
             <Title as="h2" size="lg" tone="dark" className="mt-5">
-              Synopsis
+              {book.aboutTitle || "Synopsis"}
             </Title>
           </BlurReveal>
 

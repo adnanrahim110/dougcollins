@@ -31,7 +31,7 @@ export default function ContactSection() {
           </BlurReveal>
 
           <BlurReveal delay={2}>
-            <p className="text-ash text-base leading-[1.8] max-w-lg mx-auto">
+            <p className="text-ash text-base leading-[1.8] max-w-2xl mx-auto">
               Interested in rights, speaking engagements, collaborations, or
               just want to share your thoughts on the books?
             </p>

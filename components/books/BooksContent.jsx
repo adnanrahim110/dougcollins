@@ -10,22 +10,17 @@ import { useMemo, useState } from "react";
 
 export default function BooksContent() {
   const [search, setSearch] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("All");
-  const [seriesFilter, setSeriesFilter] = useState("All");
   const [view, setView] = useState("grid");
 
   const filtered = useMemo(() => {
     return books.filter((b) => {
-      const matchCategory =
-        categoryFilter === "All" || b.category === categoryFilter;
-      const matchSeries = seriesFilter === "All" || b.series === seriesFilter;
       const matchSearch =
         !search ||
         b.title.toLowerCase().includes(search.toLowerCase()) ||
         b.description.toLowerCase().includes(search.toLowerCase());
-      return matchCategory && matchSeries && matchSearch;
+      return matchSearch;
     });
-  }, [categoryFilter, seriesFilter, search]);
+  }, [search]);
 
   return (
     <>
@@ -33,10 +28,6 @@ export default function BooksContent() {
       <BooksFilter
         search={search}
         setSearch={setSearch}
-        categoryFilter={categoryFilter}
-        setCategoryFilter={setCategoryFilter}
-        seriesFilter={seriesFilter}
-        setSeriesFilter={setSeriesFilter}
         view={view}
         setView={setView}
         resultCount={filtered.length}

@@ -151,25 +151,30 @@ export default function AuthorIntro() {
 
             <BlurReveal delay={1}>
               <Title size="xl" tone="cream">
-                Where Technology Meets{" "}
-                <Title.Gradient underline>Imagination</Title.Gradient>
+                Author
+                <Title.Gradient underline> Spotlight</Title.Gradient>
               </Title>
             </BlurReveal>
 
             <BlurReveal delay={2} className="space-y-4">
               <p className="text-slate text-lg leading-[1.85] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-600 first-letter:float-left first-letter:mr-2 first-letter:leading-[0.85]">
-                Dough Collins is a cybersecurity expert, software engineer, and
-                author of speculative fiction that explores the intersection of
-                technology, philosophy, and human consciousness. With a
-                background spanning mathematics, computer science, and creative
-                writing, Collins brings a unique lens to the great questions of
-                our age.
+                Doug Collins is a visionary author whose work seamlessly weaves
+                together the worlds of science, philosophy, and human
+                exploration. With a deep understanding of complex concepts like
+                zero, infinity, and the architecture of reality, Collins
+                challenges readers to move beyond conventional thought and
+                discover the profound connections that define our existence.
               </p>
-              <p className="text-smoke text-base leading-[1.85]">
-                Each novel is meticulously researched and technically grounded,
-                yet imbued with the wonder and terror of discovery. His work has
-                been praised by scientists, educators, and readers worldwide for
-                its rare combination of intellectual rigor and narrative power.
+              <p className="text-ash text-base leading-[1.85]">
+                Collins extensive research into subjects like quantum mechanics,
+                encryption, and human behavior informs his thrilling narratives,
+                making abstract topics engaging and accessible. Collins’
+                stories, such as those in Decryption Gambit and Quantum
+                Ascendancy, confront modern-day dilemmas, the ethical
+                implications of technological advancements, and the balance
+                between control and freedom. His ability to blend intense
+                adventure with intellectual exploration positions him as a
+                unique voice in speculative fiction.
               </p>
             </BlurReveal>
 

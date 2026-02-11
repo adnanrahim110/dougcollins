@@ -96,9 +96,8 @@ export const Footer = () => {
                 </h2>
               </Link>
               <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-                Author, cybersecurity expert, and explorer of the spaces where
-                technology meets humanity. Crafting stories that decode the
-                future.
+                With every story, Collins explores the delicate balance between
+                knowledge, freedom, and the consequences of our actions.
               </p>
               <div className="flex gap-3 pt-2">
                 {socials.map((s) => (

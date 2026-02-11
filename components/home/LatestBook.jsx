@@ -8,11 +8,12 @@ import Title from "@/components/ui/Title";
 import { getLatestBook } from "@/lib/data";
 import { addToCart, toggleCart } from "@/store/slices/cartSlice";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, BookOpen, Layers, ShoppingBag, Star } from "lucide-react";
+import { ArrowRight, BookOpen, ShoppingBag, Star } from "lucide-react";
+import Image from "next/image";
 import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-function Book3D({ title, series, className }) {
+function Book3D({ title, series, image, backImage, mockupImage, className }) {
   const bookRef = useRef(null);
 
   const rawX = useMotionValue(0);
@@ -77,7 +78,9 @@ function Book3D({ title, series, className }) {
           className="absolute top-[2%] -left-4.5 w-4.5 h-[96%] rounded-l origin-right"
           style={{
             transform: "rotateY(-90deg)",
-            background: "linear-gradient(to right, #1a1520, #252030, #1a1520)",
+            background: backImage
+              ? `url(${backImage}) center/cover no-repeat`
+              : "linear-gradient(to right, #1a1520, #252030, #1a1520)",
             boxShadow: "inset 2px 0 8px rgba(0,0,0,0.4)",
           }}
         >
@@ -107,7 +110,20 @@ function Book3D({ title, series, className }) {
           className="relative aspect-2/3 rounded-xl overflow-hidden"
           style={{ transform: "translateZ(1px)" }}
         >
-          <div className="absolute inset-0 bg-linear-to-br from-[#12101a] via-[#1c1930] to-[#0f0d15]" />
+          {(mockupImage || image) ? (
+            <>
+              <Image
+                src={mockupImage || image}
+                alt={title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 256px, 288px"
+              />
+              <div className="absolute inset-0 bg-linear-to-br from-black/25 via-black/10 to-black/35" />
+            </>
+          ) : (
+            <div className="absolute inset-0 bg-linear-to-br from-[#12101a] via-[#1c1930] to-[#0f0d15]" />
+          )}
 
           <div
             className="absolute inset-0 opacity-[0.04]"
@@ -249,6 +265,9 @@ export default function LatestBook() {
               <Book3D
                 title={book.title}
                 series={book.series}
+                image={book.image}
+                backImage={book.backImage}
+                mockupImage={book.mockupImage}
                 className="relative z-10"
               />
             </div>

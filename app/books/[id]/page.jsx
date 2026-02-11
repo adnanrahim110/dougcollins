@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${book.title} | Doug Collins`,
-    description: book.description,
+    description: book.description || book.synopsis,
   };
 }
 

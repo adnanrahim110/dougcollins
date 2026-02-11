@@ -54,7 +54,7 @@ export default function QuoteSection() {
           <BlurReveal delay={1} duration={1.2}>
             <blockquote className="text-center px-4">
               <p className="font-display text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl text-paper/90 leading-[1.4] md:leading-[1.35] font-medium tracking-tight">
-                The future is not something we predict.
+                No one will drive us out of the paradise
               </p>
             </blockquote>
           </BlurReveal>
@@ -63,7 +63,7 @@ export default function QuoteSection() {
             <blockquote className="text-center px-4 mt-3">
               <p className="font-display text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl leading-[1.4] md:leading-[1.35] font-medium italic tracking-tight">
                 <span className="bg-linear-to-r from-primary-300 via-primary-400 to-primary-500 bg-clip-text text-transparent">
-                  It is something we architect.
+                  that Cantor has created for us.
                 </span>
               </p>
             </blockquote>

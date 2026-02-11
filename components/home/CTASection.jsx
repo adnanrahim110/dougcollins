@@ -7,14 +7,7 @@ import Section from "@/components/ui/Section";
 import Subtitle from "@/components/ui/Subtitle";
 import Title from "@/components/ui/Title";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Bell,
-  BookOpen,
-  Mail,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 export default function CTASection() {
@@ -45,38 +38,9 @@ export default function CTASection() {
 
             <BlurReveal delay={2}>
               <p className="text-fog/60 text-base md:text-lg leading-[1.8] max-w-md">
-                Get early access to new releases, behind-the-scenes content, and
-                exclusive insights into the worlds behind the stories.
+                Join Doug Collins’ Inner Circle for early access, hidden
+                chapters, and a glimpse into the infinite.
               </p>
-            </BlurReveal>
-
-            <BlurReveal delay={3}>
-              <div className="grid grid-cols-3 gap-4 max-w-sm">
-                {[
-                  {
-                    icon: BookOpen,
-                    label: "Early Access",
-                    value: "New Titles",
-                  },
-                  { icon: Users, label: "Community", value: "5,000+" },
-                  { icon: Bell, label: "Frequency", value: "Monthly" },
-                ].map((item) => (
-                  <div key={item.label} className="text-center space-y-2">
-                    <div className="w-10 h-10 rounded-xl bg-white/3 border border-white/5 flex items-center justify-center mx-auto">
-                      <item.icon
-                        className="w-4 h-4 text-primary-400/70"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                    <p className="text-paper text-sm font-display font-bold">
-                      {item.value}
-                    </p>
-                    <p className="text-[9px] uppercase tracking-[0.2em] text-fog/30">
-                      {item.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </BlurReveal>
           </div>
 

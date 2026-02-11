@@ -14,6 +14,7 @@ import {
   ShoppingBag,
   Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -98,39 +99,74 @@ export default function BookDetailHero({ book }) {
                 style={{ rotateX, rotateY }}
                 className="relative aspect-[3/4.2] rounded-2xl overflow-hidden bg-charcoal border border-white/6 shadow-2xl shadow-primary-500/10"
               >
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-linear-to-br from-slate via-charcoal to-ink">
-                  <motion.div
-                    animate={{ scale: [1, 1.04, 1] }}
-                    transition={{
-                      duration: 6,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="w-16 h-16 rounded-full bg-primary-500/8 border border-primary-500/20 flex items-center justify-center mb-5"
-                  >
-                    <BookOpen
-                      className="w-8 h-8 text-primary-400"
-                      strokeWidth={1.2}
+                {book.mockupImage ? (
+                  <>
+                    <Image
+                      src={book.mockupImage}
+                      alt={`${book.title} mockup`}
+                      fill
+                      className="object-contain p-3"
+                      sizes="(max-width: 1024px) 288px, 320px"
                     />
-                  </motion.div>
+                    <div className="absolute inset-0 bg-linear-to-b from-black/5 via-transparent to-black/30" />
+                  </>
+                ) : book.image ? (
+                  <>
+                    <Image
+                      src={book.image}
+                      alt={book.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 288px, 320px"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/35" />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-linear-to-br from-slate via-charcoal to-ink">
+                    <motion.div
+                      animate={{ scale: [1, 1.04, 1] }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="w-16 h-16 rounded-full bg-primary-500/8 border border-primary-500/20 flex items-center justify-center mb-5"
+                    >
+                      <BookOpen
+                        className="w-8 h-8 text-primary-400"
+                        strokeWidth={1.2}
+                      />
+                    </motion.div>
 
-                  <p className="text-[9px] uppercase tracking-[0.3em] text-white/25 mb-2">
-                    Doug Collins
-                  </p>
-                  <h3 className="font-display text-xl md:text-2xl font-bold text-paper text-center leading-snug mb-2">
-                    {book.title}
-                  </h3>
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-primary-400/60 text-center">
-                    {book.series}
-                  </p>
+                    <p className="text-[9px] uppercase tracking-[0.3em] text-white/25 mb-2">
+                      Doug Collins
+                    </p>
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-paper text-center leading-snug mb-2">
+                      {book.title}
+                    </h3>
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-primary-400/60 text-center">
+                      {book.series}
+                    </p>
+                  </div>
+                )}
 
-                  <div className="absolute top-5 left-5 w-7 h-7 border-l-2 border-t-2 border-primary-400/15 rounded-tl-lg" />
-                  <div className="absolute top-5 right-5 w-7 h-7 border-r-2 border-t-2 border-primary-400/15 rounded-tr-lg" />
-                  <div className="absolute bottom-5 left-5 w-7 h-7 border-l-2 border-b-2 border-primary-400/15 rounded-bl-lg" />
-                  <div className="absolute bottom-5 right-5 w-7 h-7 border-r-2 border-b-2 border-primary-400/15 rounded-br-lg" />
-                </div>
+                <div className="absolute top-5 left-5 w-7 h-7 border-l-2 border-t-2 border-primary-400/15 rounded-tl-lg" />
+                <div className="absolute top-5 right-5 w-7 h-7 border-r-2 border-t-2 border-primary-400/15 rounded-tr-lg" />
+                <div className="absolute bottom-5 left-5 w-7 h-7 border-l-2 border-b-2 border-primary-400/15 rounded-bl-lg" />
+                <div className="absolute bottom-5 right-5 w-7 h-7 border-r-2 border-b-2 border-primary-400/15 rounded-br-lg" />
 
-                <div className="absolute left-0 inset-y-0 w-1 bg-linear-to-b from-primary-500/15 via-primary-500/30 to-primary-500/15" />
+                <div
+                  className="absolute left-0 inset-y-0 w-1.5 bg-linear-to-b from-primary-500/15 via-primary-500/30 to-primary-500/15"
+                  style={
+                    book.backImage
+                      ? {
+                          backgroundImage: `url(${book.backImage})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }
+                      : undefined
+                  }
+                />
 
                 <motion.div
                   animate={{ x: ["-100%", "200%"] }}
