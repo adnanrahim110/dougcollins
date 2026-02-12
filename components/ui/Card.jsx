@@ -81,14 +81,14 @@ export const Card = ({
                 src={image}
                 alt={`${title} front cover`}
                 fill
-                className="object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+                className="object-contain transition-opacity duration-500 opacity-100 group-hover:opacity-0"
                 sizes="(max-width: 768px) 100vw, 360px"
               />
               <Image
                 src={backImage}
                 alt={`${title} back cover`}
                 fill
-                className="object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                className="object-contain transition-opacity duration-500 opacity-0 group-hover:opacity-100"
                 sizes="(max-width: 768px) 100vw, 360px"
               />
             </>
@@ -97,7 +97,7 @@ export const Card = ({
               src={image}
               alt={title}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, 360px"
             />
           ) : (
