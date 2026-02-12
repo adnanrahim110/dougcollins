@@ -121,19 +121,19 @@ export default function AboutHero() {
 
             <BlurReveal delay={2}>
               <p className="text-white/50 text-lg leading-[1.9] max-w-lg">
-                Author. Engineer. Cryptographer. Bridging the gap between
-                cutting-edge technology and narrative fiction, creating stories
-                that are as intellectually rigorous as they are emotionally
-                compelling.
+                What makes Doug Collins stand out is how real his stories feel.
+                His novels aren’t just exciting they’re built on a strong
+                understanding of cybersecurity, future technology, and how these
+                changes could affect everyday life.
               </p>
             </BlurReveal>
 
             <BlurReveal delay={3}>
               <p className="text-white/40 text-base leading-[1.9] max-w-lg">
-                With professional experience spanning cybersecurity, software
-                engineering, and academic research, Collins brings unparalleled
-                depth of technical knowledge to his fiction—without sacrificing
-                the human stories at the heart of every novel.
+                Doug blends today’s world with believable possibilities,
+                creating stories that feel close to reality. His clear research
+                and technical knowledge give readers confidence, making his
+                books easy to enjoy for both tech lovers and general readers.
               </p>
             </BlurReveal>
 

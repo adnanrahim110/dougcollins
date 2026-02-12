@@ -7,38 +7,62 @@ import { motion } from "framer-motion";
 import {
   AlertTriangle,
   ArrowDownRight,
-  Bug,
-  Repeat,
-  TrendingUp,
-  Users,
+  Database,
+  Fingerprint,
+  GitMerge,
+  KeyRound,
+  Layers,
+  Network,
+  User,
 } from "lucide-react";
 
 const problems = [
   {
-    icon: Repeat,
-    title: "The Endless Spiral",
-    desc: "Cybersecurity has always trailed the dark side — a cat-and-mouse game of threat and reaction. This cycle is never-ending and will remain so without a paradigm shift.",
+    icon: Fingerprint,
+    title: "Identity Exposure",
+    desc: "Legacy systems expose identities too broadly, creating easy access points for attackers. Compromised identities can lead to cascading failures across systems due to insufficient isolation.",
     accent: "from-accent-400/20 to-accent-500/5",
     iconColor: "text-accent-400",
   },
   {
-    icon: TrendingUp,
-    title: "Budgets Never Enough",
-    desc: "Our numbers keep growing in terms of both cybersecurity personnel and budgets, however enough is never enough it seems. Management is frustrated with costs as are we with not being provided enough budget.",
+    icon: Database,
+    title: "Data Meaningfulness",
+    desc: "Data in older systems often retains persistent meanings, making stolen information valuable for extended periods. This data is often not sufficiently fragmented or isolated, exacerbating the risks associated with data breaches.",
     accent: "from-primary-400/20 to-primary-500/5",
     iconColor: "text-primary-400",
   },
   {
-    icon: Users,
-    title: "The Human Attack Surface",
-    desc: "Our largest and most vulnerable attack surface — human beings exposed to social engineering — will always be an ongoing risk due to the very nature of them being human.",
+    icon: KeyRound,
+    title: "Persistent Access",
+    desc: "Many systems grant continuous access once privileges are established, creating long windows of vulnerability. Attackers can maintain undetected access and expand their reach within the system.",
     accent: "from-secondary-400/20 to-secondary-500/5",
     iconColor: "text-secondary-400",
   },
   {
-    icon: Bug,
-    title: "AI & Quantum Threat",
-    desc: "Upcoming technological advances such as AI and Quantum Computing may overload us. The dark side will make more effective use of these advances than ourselves — they historically do when innovation is introduced.",
+    icon: Network,
+    title: "Broad Trust",
+    desc: "Once entities are authenticated, they often gain excessive trust, leading to sprawling trust networks. These systems lack sufficient controls to contain compromised identities, causing widespread exposure.",
+    accent: "from-accent-400/20 to-accent-500/5",
+    iconColor: "text-accent-400",
+  },
+  {
+    icon: Layers,
+    title: "Persistent State",
+    desc: "Legacy systems often rely on constant states that track identities, data, and policies. This static approach limits adaptability and impedes real-time responses to threats.",
+    accent: "from-primary-400/20 to-primary-500/5",
+    iconColor: "text-primary-400",
+  },
+  {
+    icon: GitMerge,
+    title: "Failure Propagation",
+    desc: "The interconnectedness of legacy systems means that failures in one area often propagate throughout the entire ecosystem, amplifying the impact of breaches and disruptions.",
+    accent: "from-secondary-400/20 to-secondary-500/5",
+    iconColor: "text-secondary-400",
+  },
+  {
+    icon: User,
+    title: "Human-Dependent Security",
+    desc: "Traditional cybersecurity places significant trust in human actions to maintain system integrity. This reliance exposes systems to human error, which is often unavoidable in complex systems.",
     accent: "from-accent-400/20 to-accent-500/5",
     iconColor: "text-accent-400",
   },
@@ -46,30 +70,29 @@ const problems = [
 
 export default function AuditProblem() {
   return (
-    <section className="relative bg-paper overflow-hidden">
+    <section className="relative bg-paper">
       <div className="absolute top-0 right-0 w-100 h-100 rounded-full bg-accent-500/2 blur-[120px] pointer-events-none" />
 
       <div className="max-w-350 mx-auto px-5 sm:px-8 lg:px-12 py-24 md:py-32 lg:py-40">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 items-start">
-          <div className="lg:sticky lg:top-36">
+          <div className="sticky top-36 self-start h-fit">
             <BlurReveal>
               <Subtitle tone="dark" line lineWidth={36}>
-                The Problem
+                SECTION HIGHLIGHTS
               </Subtitle>
             </BlurReveal>
 
             <BlurReveal delay={1}>
               <Title as="h2" size="lg" tone="dark" className="mt-5">
-                A Field Without <Title.Gradient>Foundation</Title.Gradient>
+                Audit Findings on <Title.Gradient>Cybersecurity</Title.Gradient>
               </Title>
             </BlurReveal>
 
             <BlurReveal delay={2}>
               <p className="mt-5 text-smoke text-base leading-relaxed max-w-md">
-                Current cybersecurity has evolved without a founding
-                architecture to guide it strategically — always reacting in
-                patch-like fashion. The result is a field caught in an endless
-                spiral.
+                Audit Findings on Cybersecurity critical vulnerabilities present
+                in traditional cybersecurity systems. These flaws are deeply
+                embedded within legacy architectures and include issues such as:
               </p>
             </BlurReveal>
 

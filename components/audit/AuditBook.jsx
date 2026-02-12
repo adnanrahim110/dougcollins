@@ -14,12 +14,12 @@ import {
 } from "lucide-react";
 
 const highlights = [
-  "Exposes the fundamental architectural flaw in modern cybersecurity",
-  "Drawn from 35+ years of real-world audit findings",
-  "Proposes a paradigm shift from reactive to proactive posture",
-  "Addresses AI and Quantum Computing as force multipliers",
-  "Offers a practical architectural blueprint for organizations",
-  "Thought-provoking, accessible to both experts and newcomers",
+  "Data should be meaningless to outsiders. Keep it fragmented and isolated to reduce its value if compromised.",
+  "Access shouldn’t last forever. Persistent access is a ticking time bomb. Set time limits to reduce risk.",
+  "Trust should be specific. Broad trust networks leave too many doors unlocked. Tighten it up.",
+  "States should be temporary. Too much data stuck in one place? It makes systems vulnerable. Keep things fluid and adaptable.",
+  "One failure shouldn’t lead to another. If a breach occurs, it shouldn’t spread. Isolate failures before they escalate.",
+  "Humans aren’t perfect. Systems shouldn’t rely on human behavior. Automate and reduce the risk.",
 ];
 
 export default function AuditBook() {
@@ -81,19 +81,18 @@ export default function AuditBook() {
 
             <BlurReveal delay={1}>
               <Title as="h2" size="lg" tone="charcoal">
-                What You&apos;ll <Title.Gradient>Discover</Title.Gradient>
+                Cybersecurity Findings{" "}
+                <Title.Gradient>- Key Insights</Title.Gradient>
               </Title>
             </BlurReveal>
 
             <BlurReveal delay={2}>
               <div className="relative pl-6 border-l-2 border-primary-500/30">
                 <Quote className="absolute -left-3 -top-1 w-5 h-5 text-primary-500/20" />
-                <p className="text-white/50 text-base italic leading-relaxed">
-                  &ldquo;I know you&apos;ll find this book thought-provoking and
-                  an interesting read.&rdquo;
-                </p>
-                <p className="text-primary-400/60 text-sm mt-2 font-medium">
-                  — Doug Collins
+                <p className="text-white/50 text-base leading-relaxed">
+                  Your identity is your gateway. If it’s exposed, attackers can
+                  easily slip in and wreak havoc across systems. Let’s lock it
+                  down.
                 </p>
               </div>
             </BlurReveal>

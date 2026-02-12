@@ -21,7 +21,7 @@ export default function ContactFormSection() {
               line="both"
               lineWidth={36}
             >
-              Send a Message
+              Send a Signal
             </Subtitle>
           </BlurReveal>
           <BlurReveal delay={1}>
@@ -32,13 +32,12 @@ export default function ContactFormSection() {
               align="center"
               className="mt-5"
             >
-              Write to <Title.Gradient>Me</Title.Gradient>
+              Let’s <Title.Gradient>Connect</Title.Gradient>
             </Title>
           </BlurReveal>
           <BlurReveal delay={2}>
             <p className="mt-4 text-smoke text-base max-w-md mx-auto">
-              Fill out the form below and I&apos;ll get back to you as soon as
-              possible.
+              This is where the encryption ends. And the conversation begins.
             </p>
           </BlurReveal>
         </div>

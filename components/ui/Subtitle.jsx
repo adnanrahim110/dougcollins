@@ -68,6 +68,7 @@ export function Subtitle({
   tracking,
   as: Tag = "p",
   className,
+  textClasses,
   ...rest
 }) {
   const textClass = cn(
@@ -75,6 +76,7 @@ export function Subtitle({
     tracking || "tracking-[0.25em]",
     tones[tone] || tones.dark,
     textSizes[size] || textSizes.sm,
+    textClasses,
   );
 
   const lineClassName = cn(
@@ -91,7 +93,6 @@ export function Subtitle({
         className={cn("flex items-center gap-3", flexAligns[align], className)}
         {...rest}
       >
-        {/* Left line (always shown when line is truthy) */}
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: lineWidth }}
@@ -102,7 +103,6 @@ export function Subtitle({
 
         <Tag className={textClass}>{children}</Tag>
 
-        {/* Right line (only when line="both") */}
         {showBoth && (
           <motion.div
             initial={{ width: 0 }}

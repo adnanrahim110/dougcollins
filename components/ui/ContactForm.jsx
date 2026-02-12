@@ -27,15 +27,15 @@ export const ContactForm = ({ tone = "dark" }) => {
           <h3
             className={`text-3xl md:text-4xl font-display font-bold ${isDark ? "text-white" : "text-ink"}`}
           >
-            Let&apos;s Start a Conversation
+            Speak Before the Accord Forgets
           </h3>
         </div>
         <p
           className={`leading-relaxed ${isDark ? "text-white/50" : "text-ink/60"}`}
         >
-          Interested in rights, speaking engagements, collaborations, or just
-          want to share your thoughts on the books? I&apos;d love to hear from
-          you.
+          The mineral revealed itself in stillness. Ideas often do. Whether you
+          carry a question, a collaboration, or simply the need to speak what’s
+          been keeping you awake, I’m listening.
         </p>
         <div className="space-y-4">
           <div className="flex items-center gap-3">
@@ -65,7 +65,7 @@ export const ContactForm = ({ tone = "dark" }) => {
             <span
               className={`text-sm ${isDark ? "text-white/60" : "text-ink/60"}`}
             >
-              Undisclosed Location
+              Canada
             </span>
           </div>
         </div>

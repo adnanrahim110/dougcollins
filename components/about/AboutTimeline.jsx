@@ -9,32 +9,32 @@ import { motion } from "framer-motion";
 const timeline = [
   {
     year: "2015",
-    title: "Cybersecurity Career",
-    desc: "Began working in enterprise cybersecurity, specializing in cryptographic systems and threat intelligence.",
+    title: "Realism Meets Imagination",
+    desc: "Doug Collins blends thrilling fiction with real knowledge of cybersecurity and future tech. His stories feel believable because they’re grounded in what could actually happen next.",
     side: "left",
   },
   {
     year: "2018",
-    title: "First Novel Published",
-    desc: "Published 'The Accord of Shadows', blending espionage fiction with deep technical realism. A new genre was born.",
+    title: "Tech Knowledge Depth",
+    desc: "His deep understanding of technology and research into what’s coming gives his narratives authority and authenticity.",
     side: "right",
   },
   {
     year: "2020",
-    title: "Software Engineering",
-    desc: "Transitioned to full-stack software engineering while continuing to write fiction at the intersection of tech and humanity.",
+    title: "Future Focus Vision",
+    desc: "Collins doesn’t just tell stories about the future. He explores how emerging technologies might shape human experience.",
     side: "left",
   },
   {
     year: "2022",
-    title: "Critical Breakthrough",
-    desc: "Silent Dominion and The Decryption Gambit earned critical acclaim, establishing a new genre of technical fiction.",
+    title: "Narrative With Purpose",
+    desc: "His writing isn’t just suspenseful. It invites readers to think about the impact of code, networks, and cyber realities on everyday life.",
     side: "right",
   },
   {
     year: "2024",
-    title: "Present Day",
-    desc: "Three published series, eight novels, and a growing community of readers who demand more from their fiction.",
+    title: "Authenticated Digital Worlds",
+    desc: "Collins uses his real‑world experience with cybersecurity, government, and research to craft worlds where every digital interaction feels significant.",
     side: "left",
   },
 ];
@@ -52,9 +52,9 @@ export default function AboutTimeline() {
 
           <BlurReveal delay={1}>
             <Title size="xl" tone="dark" align="center">
-              The Path{" "}
+              The Collins{" "}
               <Title.Gradient variant="primary" underline>
-                So Far
+                Method
               </Title.Gradient>
             </Title>
           </BlurReveal>

@@ -2,7 +2,7 @@
 
 import { Environment, MeshDistortMaterial } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 const smoothstep = (x) => {
@@ -13,6 +13,36 @@ const smoothstep = (x) => {
 const GoldSphere = ({ scrollRef }) => {
   const meshRef = useRef();
   const materialRef = useRef();
+  const localTimeRef = useRef(0);
+  const geometry = useMemo(() => {
+    const geo = new THREE.SphereGeometry(1, 64, 64);
+    const pos = geo.attributes.position;
+    const vertex = new THREE.Vector3();
+    const normal = new THREE.Vector3();
+
+    for (let i = 0; i < pos.count; i += 1) {
+      vertex.fromBufferAttribute(pos, i);
+      normal.copy(vertex).normalize();
+
+      // Deterministic pseudo-noise from a few sine layers + per-vertex jitter.
+      const a = Math.sin(vertex.x * 4.1 + vertex.y * 2.7 + vertex.z * 3.3);
+      const b = Math.sin(vertex.x * 8.3 - vertex.y * 6.1 + vertex.z * 5.5);
+      const c = Math.sin(vertex.y * 11.1 + vertex.z * 7.7);
+      // Use position-based hash (not vertex index) to avoid a visible seam.
+      const hash =
+        Math.sin(vertex.x * 12.9898 + vertex.y * 78.233 + vertex.z * 37.719) *
+        43758.5453123;
+      const jitter = hash - Math.floor(hash) - 0.5;
+      const n = a * 0.55 + b * 0.3 + c * 0.15 + jitter * 0.12;
+
+      vertex.addScaledVector(normal, n * 0.045);
+      pos.setXYZ(i, vertex.x, vertex.y, vertex.z);
+    }
+
+    pos.needsUpdate = true;
+    geo.computeVertexNormals();
+    return geo;
+  }, []);
   const velocityRef = useRef(new THREE.Vector3());
   const targetPositionRef = useRef(new THREE.Vector3());
   const forceRef = useRef(new THREE.Vector3());
@@ -20,7 +50,8 @@ const GoldSphere = ({ scrollRef }) => {
   const scrollFactorRef = useRef(0);
 
   useFrame((state, delta) => {
-    const t = state.clock.getElapsedTime();
+    const t = localTimeRef.current;
+    localTimeRef.current += delta;
     const rawScroll = THREE.MathUtils.clamp(
       scrollRef?.current?.progress ?? 0,
       0,
@@ -44,12 +75,14 @@ const GoldSphere = ({ scrollRef }) => {
 
       const baseAmplitude = THREE.MathUtils.lerp(1, 0.72, scrollDepth);
 
+      const wobbleX = Math.sin(t * 0.27) * 0.18;
+      const wobbleY = Math.sin(t * 0.2) * 0.13 + Math.sin(t * 0.6) * 0.03;
+      const wobbleZ = Math.sin(t * 0.25) * 0.12;
+
       targetPosition.set(
-        Math.sin(t * 0.27) * 0.18 * baseAmplitude - scroll * 0.3,
-        (Math.sin(t * 0.2 + 1.3) * 0.13 + Math.sin(t * 0.6) * 0.03) *
-          baseAmplitude -
-          scroll * 1.2,
-        Math.cos(t * 0.25) * 0.12 * baseAmplitude - scroll * 0.45,
+        wobbleX * baseAmplitude - scroll * 0.3,
+        wobbleY * baseAmplitude - scroll * 1.2,
+        wobbleZ * baseAmplitude - scroll * 0.45,
       );
 
       const subSteps = Math.min(5, Math.max(1, Math.ceil(delta / (1 / 60))));
@@ -92,7 +125,7 @@ const GoldSphere = ({ scrollRef }) => {
         delta,
       );
 
-      const targetScale = THREE.MathUtils.lerp(2.2, 1.65, scrollDepth);
+      const targetScale = THREE.MathUtils.lerp(2.2, 1.05, scrollDepth);
       const nextScale = THREE.MathUtils.damp(
         meshRef.current.scale.x,
         targetScale,
@@ -111,9 +144,13 @@ const GoldSphere = ({ scrollRef }) => {
           1,
         );
         const targetDistort =
-          (0.018 + strain * 0.03) * THREE.MathUtils.lerp(1, 0.75, scrollDepth);
-        const targetSpeed = THREE.MathUtils.lerp(0.44 + strain * 0.28, 0.36, scrollDepth);
-        const targetEnv = THREE.MathUtils.lerp(2.8, 2.25, scrollDepth);
+          (0.028 + strain * 0.022) * THREE.MathUtils.lerp(1, 0.9, scrollDepth);
+        const targetSpeed = THREE.MathUtils.lerp(
+          0.18 + strain * 0.18,
+          0.14,
+          scrollDepth,
+        );
+        const targetEnv = THREE.MathUtils.lerp(2.1, 1.85, scrollDepth);
 
         materialRef.current.distort = THREE.MathUtils.damp(
           materialRef.current.distort,
@@ -152,18 +189,17 @@ const GoldSphere = ({ scrollRef }) => {
   });
 
   return (
-    <mesh ref={meshRef} scale={2.2}>
-      <sphereGeometry args={[1, 64, 64]} />
+    <mesh ref={meshRef} geometry={geometry} scale={2}>
       <MeshDistortMaterial
         ref={materialRef}
-        color="#D4AF37" // Rich Gold
-        envMapIntensity={2.8}
+        color="#C9A336" // Darker gold
+        envMapIntensity={2.1}
         clearcoat={1}
-        clearcoatRoughness={0.1}
+        clearcoatRoughness={0.12}
         metalness={1}
-        roughness={0.13}
-        distort={0.02}
-        speed={0.5}
+        roughness={0.18}
+        distort={0.028}
+        speed={0.18}
       />
     </mesh>
   );
@@ -230,13 +266,18 @@ export const MainScene = ({ className, scrollRef }) => {
           intensity={2.4}
           color="#ffffff"
         />
-        <pointLight position={[-10, -10, -10]} intensity={1.25} color="#C6A665" />
+        <pointLight
+          position={[-10, -10, -10]}
+          intensity={1.25}
+          color="#C6A665"
+        />
 
         <Suspense fallback={null}>
-          <GoldSphere scrollRef={scrollRef} />
-          <AmbientDust />
           <Environment preset="city" />
         </Suspense>
+
+        <GoldSphere scrollRef={scrollRef} />
+        <AmbientDust />
       </Canvas>
     </div>
   );

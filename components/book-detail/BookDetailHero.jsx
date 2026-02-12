@@ -1,41 +1,24 @@
 "use client";
 
 import BlurReveal from "@/components/ui/BlurReveal";
+import Book3D from "@/components/ui/Book3D";
 import Button from "@/components/ui/Button";
 import Title from "@/components/ui/Title";
 import { addToCart, toggleCart } from "@/store/slices/cartSlice";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  BookOpen,
   Calendar,
   FileText,
   Hash,
   ShoppingBag,
   Sparkles,
 } from "lucide-react";
-import Image from "next/image";
-import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 export default function BookDetailHero({ book }) {
   const dispatch = useDispatch();
   const isComingSoon = book.status === "comingSoon";
-
-  const containerRef = useRef(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 30 });
-  const rotateX = useTransform(springY, [-300, 300], [8, -8]);
-  const rotateY = useTransform(springX, [-300, 300], [-8, 8]);
-
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left - rect.width / 2);
-    mouseY.set(e.clientY - rect.top - rect.height / 2);
-  };
 
   const handleAddToCart = () => {
     dispatch(
@@ -85,100 +68,15 @@ export default function BookDetailHero({ book }) {
 
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-center">
           <BlurReveal preset="slide-left" delay={0} trigger="mount">
-            <div
-              ref={containerRef}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={() => {
-                mouseX.set(0);
-                mouseY.set(0);
-              }}
-              className="relative max-w-xs mx-auto lg:mx-0"
-              style={{ perspective: 900 }}
-            >
-              <motion.div
-                style={{ rotateX, rotateY }}
-                className="relative aspect-[3/4.2] rounded-2xl overflow-hidden bg-charcoal border border-white/6 shadow-2xl shadow-primary-500/10"
-              >
-                {book.mockupImage ? (
-                  <>
-                    <Image
-                      src={book.mockupImage}
-                      alt={`${book.title} mockup`}
-                      fill
-                      className="object-contain p-3"
-                      sizes="(max-width: 1024px) 288px, 320px"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-b from-black/5 via-transparent to-black/30" />
-                  </>
-                ) : book.image ? (
-                  <>
-                    <Image
-                      src={book.image}
-                      alt={book.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 288px, 320px"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/35" />
-                  </>
-                ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-linear-to-br from-slate via-charcoal to-ink">
-                    <motion.div
-                      animate={{ scale: [1, 1.04, 1] }}
-                      transition={{
-                        duration: 6,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="w-16 h-16 rounded-full bg-primary-500/8 border border-primary-500/20 flex items-center justify-center mb-5"
-                    >
-                      <BookOpen
-                        className="w-8 h-8 text-primary-400"
-                        strokeWidth={1.2}
-                      />
-                    </motion.div>
-
-                    <p className="text-[9px] uppercase tracking-[0.3em] text-white/25 mb-2">
-                      Doug Collins
-                    </p>
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-paper text-center leading-snug mb-2">
-                      {book.title}
-                    </h3>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-primary-400/60 text-center">
-                      {book.series}
-                    </p>
-                  </div>
-                )}
-
-                <div className="absolute top-5 left-5 w-7 h-7 border-l-2 border-t-2 border-primary-400/15 rounded-tl-lg" />
-                <div className="absolute top-5 right-5 w-7 h-7 border-r-2 border-t-2 border-primary-400/15 rounded-tr-lg" />
-                <div className="absolute bottom-5 left-5 w-7 h-7 border-l-2 border-b-2 border-primary-400/15 rounded-bl-lg" />
-                <div className="absolute bottom-5 right-5 w-7 h-7 border-r-2 border-b-2 border-primary-400/15 rounded-br-lg" />
-
-                <div
-                  className="absolute left-0 inset-y-0 w-1.5 bg-linear-to-b from-primary-500/15 via-primary-500/30 to-primary-500/15"
-                  style={
-                    book.backImage
-                      ? {
-                          backgroundImage: `url(${book.backImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                        }
-                      : undefined
-                  }
-                />
-
-                <motion.div
-                  animate={{ x: ["-100%", "200%"] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    repeatDelay: 4,
-                  }}
-                  className="absolute inset-0 w-1/3 bg-linear-to-r from-transparent via-white/3 to-transparent skew-x-12"
-                />
-              </motion.div>
+            <div className="relative max-w-xs mx-auto lg:mx-0">
+              <Book3D
+                title={book.title}
+                image={book.image}
+                backImage={book.backImage}
+                widthClassName="w-72 sm:w-80"
+                thickness={28}
+                sizes="(max-width: 1024px) 288px, 320px"
+              />
 
               {isComingSoon && (
                 <motion.div

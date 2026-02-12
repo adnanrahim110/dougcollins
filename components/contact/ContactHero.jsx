@@ -60,23 +60,24 @@ export default function ContactHero() {
         <div className="max-w-2xl">
           <BlurReveal delay={0}>
             <Subtitle tone="light" line lineWidth={36}>
-              Get in Touch
+              Reach Out
             </Subtitle>
           </BlurReveal>
 
           <BlurReveal delay={1}>
             <Title as="h1" size="2xl" tone="light" className="mt-6">
-              Let&apos;s Start a{" "}
+              Cross the{" "}
               <Title.Gradient underline underlineDelay={1}>
-                Conversation
+                Silence
               </Title.Gradient>
             </Title>
           </BlurReveal>
 
           <BlurReveal delay={2}>
             <p className="mt-6 text-white/45 text-lg md:text-xl leading-relaxed max-w-lg font-light">
-              Whether you have a question, a collaboration idea, or just want to
-              talk about books and technology — I&apos;d love to hear from you.
+              Before the signal fades. Before the Accord tightens. Before we
+              forget that technology is only ever a mirror held up to who we are
+              willing to become. I’d love to hear from you.
             </p>
           </BlurReveal>
         </div>

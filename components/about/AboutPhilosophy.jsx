@@ -10,18 +10,18 @@ import { BookOpen, Brain, Lightbulb } from "lucide-react";
 const philosophies = [
   {
     icon: Brain,
-    title: "Technical Authenticity",
-    body: "Every line of code, every cryptographic protocol, every system architecture in my novels is grounded in real-world science. Fiction should expand the mind, not insult it.",
+    title: "The Power and Consequences of Technology",
+    body: "Collins examines the dangerous allure of groundbreaking discoveries and their impact on society, particularly in areas like cybersecurity, encryption, and artificial intelligence.",
   },
   {
     icon: Lightbulb,
-    title: "Human-First Stories",
-    body: "Technology is the lens, but humanity is the subject. My characters aren't vehicles for exposition—they're flawed, complex people navigating extraordinary circumstances.",
+    title: "Global Tension and Scientific Innovation",
+    body: "His stories often explore the geopolitical implications of technological breakthroughs, emphasizing how power struggles shape the course of human progress and the ethical quandaries that emerge.",
   },
   {
     icon: BookOpen,
-    title: "Questions Over Answers",
-    body: "The best stories don't tell you what to think—they make you think. I write to explore uncomfortable questions about power, identity, and the nature of reality.",
+    title: "Philosophical Reflection on Human Nature and Progress",
+    body: "Collins challenges readers to reflect on how far they are willing to go in the name of technological advancement and whether the pursuit of progress can be reconciled with preserving fundamental human freedoms.",
   },
 ];
 
@@ -32,13 +32,13 @@ export default function AboutPhilosophy() {
         <div className="text-center mb-16 space-y-4">
           <BlurReveal delay={0}>
             <Subtitle tone="cream" align="center" line="both" lineWidth={40}>
-              Writing Philosophy
+              Techno-Thriller
             </Subtitle>
           </BlurReveal>
 
           <BlurReveal delay={1}>
             <Title size="xl" tone="cream" align="center">
-              What Drives the{" "}
+              Key Themes In His{" "}
               <Title.Gradient variant="primary" underline>
                 Work
               </Title.Gradient>

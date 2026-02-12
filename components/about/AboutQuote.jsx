@@ -16,8 +16,8 @@ export default function AboutQuote() {
 
         <BlurReveal delay={1}>
           <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl text-charcoal leading-[1.4] font-medium -mt-10 md:-mt-16 px-4">
-            I write because the questions that haunt me at 3 AM deserve more
-            than a tweet. They deserve worlds.
+            Every discovery, every algorithm, becomes a story about power and
+            responsibility.
           </blockquote>
         </BlurReveal>
 

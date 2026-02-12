@@ -71,18 +71,27 @@ export default function AuditHero() {
 
             <BlurReveal delay={2}>
               <p className="text-white/50 text-lg leading-[1.9] max-w-xl">
-                A paradigm-shifting exploration of cybersecurity&apos;s
-                fundamental flaws — drawn from over 35 years of hands-on audit
-                experience across financial, insurance, utility, and
-                manufacturing sectors.
+                Doug Collins, in his work The New Architecture: A Structural
+                Revolution in Cybersecurity, challenges traditional
+                cybersecurity approaches by examining the root causes of
+                vulnerabilities within legacy systems. Collins argues that many
+                of the persistent cyber risks we face today are not merely the
+                result of human error or insufficient tools, but stem from deep
+                architectural flaws embedded in the design of digital systems.
+                He calls for a radical shift in thinking one that moves beyond
+                reactive measures and toward a proactive, structural overhaul.
               </p>
             </BlurReveal>
 
             <BlurReveal delay={3}>
               <p className="text-white/35 text-base leading-relaxed max-w-xl">
-                This isn&apos;t another cybersecurity manual. It&apos;s a bold
-                assertion that the entire field has evolved without a founding
-                architecture — and a detailed blueprint for changing that.
+                Collins emphasizes the importance of rethinking how core
+                elements like identity, data, trust, and time are managed within
+                cybersecurity frameworks, advocating for a new architecture that
+                is inherently secure, mathematically grounded, and ethically
+                responsible. His work provides a compelling vision for a future
+                where cybersecurity is not an afterthought but a foundational
+                property of digital systems.
               </p>
             </BlurReveal>
 

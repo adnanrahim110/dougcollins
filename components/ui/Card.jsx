@@ -138,10 +138,7 @@ export const Card = ({
         </div>
 
         <div className="p-5 space-y-2">
-          <p className="text-primary/70 text-[10px] uppercase tracking-widest font-semibold">
-            {series || category}
-          </p>
-          <h3 className="text-base font-display font-semibold text-white group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-snug">
+          <h3 className="text-xl font-display font-semibold text-white group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-snug">
             {title}
           </h3>
           <p className="text-white/40 text-sm line-clamp-2 leading-relaxed">

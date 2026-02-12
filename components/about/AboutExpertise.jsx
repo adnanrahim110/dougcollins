@@ -10,26 +10,26 @@ import { Award, BookOpen, Code, Globe, Shield, Sparkles } from "lucide-react";
 const expertise = [
   {
     icon: Shield,
-    title: "Cybersecurity",
-    desc: "Enterprise security architecture, cryptographic protocols, and advanced threat intelligence. Over a decade of protecting systems at scale.",
+    title: "The Mineral of Silence",
+    desc: "A fast-paced techno-thriller that explores quantum science and international intrigue. The discovery of Silentium, a quantum mineral that could disrupt global encryption systems, drives the narrative, exploring the consequences of this discovery and the scramble to control it.",
     tags: ["Cryptography", "Threat Intel", "Architecture"],
   },
   {
     icon: Code,
-    title: "Software Engineering",
-    desc: "Full-stack development, distributed systems, and AI/ML applications. Building the future while writing about it.",
+    title: "Quantum Ascendancy",
+    desc: "This novel introduces Silentium to a global landscape, where its potential to revolutionize artificial intelligence, cryptography, and robotics is met with covert operations, cyber warfare, and diplomatic tension. The book highlights the personal and ethical struggles of those caught in the race for technological supremacy.",
     tags: ["Full-Stack", "Systems", "AI/ML"],
   },
   {
     icon: BookOpen,
-    title: "Speculative Fiction",
-    desc: "Technically grounded science fiction that explores the human condition through the lens of emerging technology.",
+    title: "The Accord of Shadows",
+    desc: "Set in a world where a quantum discovery enforces a new world order, this novel explores the quiet manipulation of society through technology. It offers a powerful commentary on how easily personal freedoms can be sacrificed for the sake of societal “peace.”",
     tags: ["Sci-Fi", "Techno-Thriller", "Philosophy"],
   },
   {
     icon: Globe,
-    title: "Speaking & Consulting",
-    desc: "Keynotes and workshops on cybersecurity, AI ethics, and the intersection of technology and storytelling.",
+    title: "Consulting & Speaking Engagements",
+    desc: "Doug Collins is also a sought-after consultant and speaker, frequently addressing audiences on topics such as cybersecurity, artificial intelligence, and the ethical implications of technological advancements. Through workshops and keynotes, he engages professionals in discussions about how technology will shape the future of society.",
     tags: ["Keynotes", "Workshops", "AI Ethics"],
   },
 ];
@@ -47,15 +47,15 @@ export default function AboutExpertise() {
         <div className="text-center mb-16 space-y-4">
           <BlurReveal delay={0}>
             <Subtitle tone="light" align="center" line="both" lineWidth={40}>
-              Expertise
+              Tech-Focused
             </Subtitle>
           </BlurReveal>
 
           <BlurReveal delay={1}>
             <Title size="xl" tone="light" align="center">
-              Where I{" "}
+              Major Works and Their{" "}
               <Title.Gradient variant="primary" underline>
-                Operate
+                Impact
               </Title.Gradient>
             </Title>
           </BlurReveal>

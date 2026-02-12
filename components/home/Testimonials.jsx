@@ -4,11 +4,10 @@ import BlurReveal from "@/components/ui/BlurReveal";
 import Section from "@/components/ui/Section";
 import Subtitle from "@/components/ui/Subtitle";
 import Title from "@/components/ui/Title";
-import { getBookById } from "@/lib/data";
 import { getFeaturedReviews } from "@/lib/reviews";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Quote, Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -16,8 +15,6 @@ import { Autoplay, EffectCoverflow, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 function SlideContent({ review, active }) {
-  const book = getBookById(review.bookId);
-
   return (
     <div
       className={cn(

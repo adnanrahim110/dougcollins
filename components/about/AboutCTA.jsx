@@ -19,18 +19,18 @@ export default function AboutCTA() {
 
         <BlurReveal delay={1}>
           <Title size="lg" tone="charcoal" align="center">
-            Let&apos;s Build Something{" "}
+            Let&apos;s Disturb the{" "}
             <Title.Gradient variant="primary" underline>
-              Together
+              Silence
             </Title.Gradient>
           </Title>
         </BlurReveal>
 
         <BlurReveal delay={2}>
           <p className="text-white/40 text-base leading-[1.8] max-w-lg mx-auto">
-            Whether it&apos;s rights inquiries, speaking engagements,
-            collaborations, or just sharing your thoughts—I&apos;d love to hear
-            from you.
+            Rights inquiries. Keynotes. Or the unease you carry about where this
+            is all heading, we don’t have to solve it alone. We only have to
+            begin.
           </p>
         </BlurReveal>
 

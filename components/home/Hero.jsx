@@ -194,7 +194,13 @@ export default function Hero() {
         className="relative z-10 h-full max-w-350 mx-auto px-5 sm:px-8 lg:px-12 flex flex-col justify-center items-center text-center"
       >
         <motion.div style={subtitleMotion} className="mb-8">
-          <Subtitle tone="light" size="xs" line="both" align="center">
+          <Subtitle
+            tone="light"
+            size="xs"
+            line="both"
+            align="center"
+            textClasses="text-white!"
+          >
             Evolution of Existence
           </Subtitle>
         </motion.div>
@@ -203,7 +209,7 @@ export default function Hero() {
           style={titleMotion}
           className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-tight text-[#EAEAEA] mix-blend-overlay"
         >
-          Dough
+          Doug
           <br />
           <span className="text-[#C6A665] italic mix-blend-normal">
             Collins
