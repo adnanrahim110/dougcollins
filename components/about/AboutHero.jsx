@@ -8,12 +8,6 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, BookOpen, Fingerprint, Shield } from "lucide-react";
 import { useRef } from "react";
 
-const stats = [
-  { value: "8", label: "Novels" },
-  { value: "3", label: "Series" },
-  { value: "10+", label: "Years" },
-];
-
 export default function AboutHero() {
   const containerRef = useRef(null);
   const mouseX = useMotionValue(0);
@@ -147,21 +141,6 @@ export default function AboutHero() {
                   Get in Touch
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </div>
-            </BlurReveal>
-
-            <BlurReveal delay={5}>
-              <div className="flex gap-8 pt-6 border-t border-white/6">
-                {stats.map((s) => (
-                  <div key={s.label} className="text-center">
-                    <p className="font-display text-3xl font-bold text-primary-400">
-                      {s.value}
-                    </p>
-                    <p className="text-[9px] uppercase tracking-[0.25em] text-white/30 mt-1">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
               </div>
             </BlurReveal>
           </div>

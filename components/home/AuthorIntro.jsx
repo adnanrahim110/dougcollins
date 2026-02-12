@@ -157,7 +157,7 @@ export default function AuthorIntro() {
             </BlurReveal>
 
             <BlurReveal delay={2} className="space-y-4">
-              <p className="text-slate text-lg leading-[1.85] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-600 first-letter:float-left first-letter:mr-2 first-letter:leading-[0.85]">
+              <p className="text-slate text-lg leading-[1.85] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-600 first-letter:float-left first-letter:mr-px first-letter:leading-[0.85]">
                 Doug Collins is a visionary author whose work seamlessly weaves
                 together the worlds of science, philosophy, and human
                 exploration. With a deep understanding of complex concepts like

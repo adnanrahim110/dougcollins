@@ -67,7 +67,7 @@ export default function BooksSeries() {
           </BlurReveal>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {series.map((s, i) => {
             const color = seriesColors[i % seriesColors.length];
             const booksInSeries = getBooksBySeries(s.name);

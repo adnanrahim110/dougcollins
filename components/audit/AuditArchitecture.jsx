@@ -103,20 +103,6 @@ export default function AuditArchitecture() {
               architecture.
             </p>
           </BlurReveal>
-
-          <div className="mt-10">
-            <BlurReveal delay={3}>
-              <h3 className="font-display text-2xl md:text-[1.75rem] font-bold text-paper leading-snug">
-                Cybersecurity Architecture Check-up: Are You Ready for a Change?
-              </h3>
-            </BlurReveal>
-            <BlurReveal delay={4}>
-              <p className="mt-4 text-white/40 text-base leading-relaxed">
-                Answer these quick questions to see if your system is up to date
-                with modern cybersecurity standards:
-              </p>
-            </BlurReveal>
-          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

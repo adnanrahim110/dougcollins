@@ -8,9 +8,7 @@ import { addToCart, toggleCart } from "@/store/slices/cartSlice";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  Calendar,
   FileText,
-  Hash,
   ShoppingBag,
   Sparkles,
 } from "lucide-react";
@@ -33,9 +31,7 @@ export default function BookDetailHero({ book }) {
   };
 
   const meta = [
-    { icon: Calendar, label: "Released", value: book.releaseYear },
     { icon: FileText, label: "Pages", value: book.pages },
-    { icon: Hash, label: "ISBN", value: book.isbn },
   ];
 
   return (
@@ -90,7 +86,7 @@ export default function BookDetailHero({ book }) {
                 >
                   <Sparkles className="w-3.5 h-3.5 text-white" />
                   <span className="text-[10px] uppercase tracking-wider text-white font-semibold">
-                    Coming {book.releaseYear}
+                    Coming Soon
                   </span>
                 </motion.div>
               )}
@@ -158,7 +154,7 @@ export default function BookDetailHero({ book }) {
                 {isComingSoon ? (
                   <Button variant="outline" size="lg" disabled>
                     <Sparkles className="w-4 h-4" />
-                    Coming {book.releaseYear}
+                    Coming Soon
                   </Button>
                 ) : (
                   <Button variant="fill" size="lg" onClick={handleAddToCart}>

@@ -20,12 +20,6 @@ import Link from "next/link";
 import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-const seriesColors = {
-  "Quantum Worlds": "from-secondary-400 to-secondary-600",
-  "Masters of the Universe": "from-accent-400 to-accent-600",
-  "Geometry of Our Existence": "from-primary-400 to-primary-600",
-};
-
 const seriesDot = {
   "Quantum Worlds": "bg-secondary-400",
   "Masters of the Universe": "bg-accent-400",
@@ -198,7 +192,11 @@ function GalleryCard({ book, index }) {
 }
 
 export default function FeaturedBooks() {
-  const books = getAvailableBooks().slice(0, 4);
+  const availableBooks = getAvailableBooks();
+  const featuredBooks = availableBooks.slice(0, 4);
+  const seriesCount = [...new Set(availableBooks.map((b) => b.series))].length;
+
+  if (!featuredBooks.length) return null;
 
   return (
     <Section tone="cream" spacing="lg" grain>
@@ -245,7 +243,7 @@ export default function FeaturedBooks() {
                 </div>
                 <div>
                   <p className="text-xl font-display font-bold text-charcoal">
-                    {books.length}
+                    {availableBooks.length}
                   </p>
                   <p className="text-[9px] uppercase tracking-[0.2em] text-smoke">
                     Available
@@ -262,7 +260,7 @@ export default function FeaturedBooks() {
                 </div>
                 <div>
                   <p className="text-xl font-display font-bold text-charcoal">
-                    3
+                    {seriesCount}
                   </p>
                   <p className="text-[9px] uppercase tracking-[0.2em] text-smoke">
                     Series
@@ -276,23 +274,23 @@ export default function FeaturedBooks() {
         <div className="grid md:grid-cols-2 gap-5 lg:gap-7">
           <div className="space-y-5 lg:space-y-7 md:pt-16">
             <BlurReveal preset="slide-left" delay={0}>
-              <GalleryCard book={books[0]} index={0} />
+              <GalleryCard book={featuredBooks[0]} index={0} />
             </BlurReveal>
-            {books[2] && (
+            {featuredBooks[2] && (
               <BlurReveal preset="slide-left" delay={2}>
-                <GalleryCard book={books[2]} index={2} />
+                <GalleryCard book={featuredBooks[2]} index={2} />
               </BlurReveal>
             )}
           </div>
           <div className="space-y-5 lg:space-y-7">
-            {books[1] && (
+            {featuredBooks[1] && (
               <BlurReveal preset="slide-right" delay={1}>
-                <GalleryCard book={books[1]} index={1} />
+                <GalleryCard book={featuredBooks[1]} index={1} />
               </BlurReveal>
             )}
-            {books[3] && (
+            {featuredBooks[3] && (
               <BlurReveal preset="slide-right" delay={3}>
-                <GalleryCard book={books[3]} index={3} />
+                <GalleryCard book={featuredBooks[3]} index={3} />
               </BlurReveal>
             )}
           </div>

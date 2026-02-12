@@ -10,7 +10,7 @@ import { ArrowRight, Mail } from "lucide-react";
 export default function AboutCTA() {
   return (
     <Section tone="charcoal" spacing="md">
-      <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
+      <div className="relative z-10 text-center max-w-350 mx-auto space-y-6">
         <BlurReveal delay={0}>
           <Subtitle tone="charcoal" align="center" line="both" lineWidth={32}>
             Collaborate

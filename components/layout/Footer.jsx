@@ -42,7 +42,7 @@ export const Footer = () => {
     <footer className="relative overflow-hidden">
       <div className="relative bg-primary-500">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,0,0,0.08),transparent_60%)] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 lg:py-10 relative z-10">
+        <div className="max-w-350 mx-auto px-6 sm:px-8 lg:px-12 py-8 lg:py-10 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="w-11 h-11 rounded-full bg-ink/10 flex items-center justify-center shrink-0">
@@ -53,7 +53,7 @@ export const Footer = () => {
                   Join the Inner Circle
                 </h3>
                 <p className="text-ink/60 text-sm">
-                  Early access, exclusives & behind-the-scenes.
+                  Early access, exclusives & behind the scenes.
                 </p>
               </div>
             </div>
@@ -84,7 +84,7 @@ export const Footer = () => {
           <div className="absolute -bottom-40 left-1/4 w-125 h-75 rounded-full bg-primary-500/3 blur-[150px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 lg:py-20 relative z-10">
+        <div className="max-w-350 mx-auto px-6 sm:px-8 lg:px-12 py-14 lg:py-20 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-12 lg:gap-0">
             <div className="lg:pr-14 space-y-6">
               <Link href="/" className="inline-flex items-center gap-3 group">
@@ -144,7 +144,7 @@ export const Footer = () => {
       </div>
 
       <div className="bg-ink">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div className="max-w-350 mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-white/40 tracking-wide">
             &copy; {new Date().getFullYear()} Doug Collins. All rights reserved.
           </p>

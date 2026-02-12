@@ -34,12 +34,6 @@ const expertise = [
   },
 ];
 
-const accolades = [
-  { icon: Award, text: "Featured in TechCrunch & Wired" },
-  { icon: Sparkles, text: "8 published novels across 3 series" },
-  { icon: Globe, text: "Readers in 40+ countries worldwide" },
-];
-
 export default function AboutExpertise() {
   return (
     <Section tone="dark" spacing="lg" grain>
@@ -104,20 +98,6 @@ export default function AboutExpertise() {
             </BlurReveal>
           ))}
         </div>
-
-        <BlurReveal delay={6}>
-          <div className="mt-16 flex flex-wrap justify-center gap-8 lg:gap-16">
-            {accolades.map((a) => (
-              <div key={a.text} className="flex items-center gap-3">
-                <a.icon
-                  className="w-5 h-5 text-primary-400"
-                  strokeWidth={1.5}
-                />
-                <span className="text-white/40 text-sm">{a.text}</span>
-              </div>
-            ))}
-          </div>
-        </BlurReveal>
       </div>
     </Section>
   );

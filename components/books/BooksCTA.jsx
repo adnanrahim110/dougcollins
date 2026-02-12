@@ -15,7 +15,7 @@ export default function BooksCTA() {
       <div className="absolute bottom-0 right-1/4 w-62.5 h-62.5 rounded-full bg-secondary-500/4 blur-[100px]" />
 
       <div className="max-w-350 mx-auto px-5 sm:px-8 lg:px-12 py-24 md:py-32 lg:py-40 relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="text-center">
           <BlurReveal>
             <Subtitle
               tone="charcoal"
@@ -41,9 +41,9 @@ export default function BooksCTA() {
           </BlurReveal>
 
           <BlurReveal delay={0.2}>
-            <p className="mt-5 text-white/40 text-base leading-relaxed max-w-md mx-auto">
+            <p className="mt-5 text-white/40 text-base leading-relaxed max-w-3xl mx-auto">
               Whether it&apos;s a question about the stories, collaboration
-              ideas, or just want to connect — I&apos;d love to hear from you.
+              ideas, or just want to connect, I&apos;d love to hear from you.
             </p>
           </BlurReveal>
 
@@ -52,7 +52,7 @@ export default function BooksCTA() {
               <Button href="/contact" variant="fill" size="md">
                 Contact Me
               </Button>
-              <Button href="/" variant="ghost-light" size="md">
+              <Button href="/" variant="ghost" size="md">
                 Back to Home
               </Button>
             </div>

@@ -84,7 +84,7 @@ export default function LatestBook() {
             <BlurReveal delay={1.5}>
               <div className="flex items-end gap-6">
                 <span className="font-display text-7xl md:text-8xl font-bold text-white/4 leading-none select-none">
-                  {book.releaseYear}
+                  NEW
                 </span>
                 <div className="flex items-center gap-1 pb-2">
                   {[...Array(5)].map((_, i) => (

@@ -8,31 +8,26 @@ import { motion } from "framer-motion";
 
 const timeline = [
   {
-    year: "2015",
     title: "Realism Meets Imagination",
     desc: "Doug Collins blends thrilling fiction with real knowledge of cybersecurity and future tech. His stories feel believable because they’re grounded in what could actually happen next.",
     side: "left",
   },
   {
-    year: "2018",
     title: "Tech Knowledge Depth",
     desc: "His deep understanding of technology and research into what’s coming gives his narratives authority and authenticity.",
     side: "right",
   },
   {
-    year: "2020",
     title: "Future Focus Vision",
     desc: "Collins doesn’t just tell stories about the future. He explores how emerging technologies might shape human experience.",
     side: "left",
   },
   {
-    year: "2022",
     title: "Narrative With Purpose",
     desc: "His writing isn’t just suspenseful. It invites readers to think about the impact of code, networks, and cyber realities on everyday life.",
     side: "right",
   },
   {
-    year: "2024",
     title: "Authenticated Digital Worlds",
     desc: "Collins uses his real‑world experience with cybersecurity, government, and research to craft worlds where every digital interaction feels significant.",
     side: "left",
@@ -68,7 +63,7 @@ export default function AboutTimeline() {
               const isLeft = item.side === "left";
               return (
                 <BlurReveal
-                  key={item.year}
+                  key={i}
                   preset={isLeft ? "slide-left" : "slide-right"}
                   delay={i + 2}
                 >
@@ -94,9 +89,6 @@ export default function AboutTimeline() {
                           : "md:col-start-2 md:pl-12"
                       }`}
                     >
-                      <span className="inline-block font-display text-sm font-bold text-primary-500 mb-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-200/30">
-                        {item.year}
-                      </span>
                       <h3 className="font-display text-xl font-bold text-charcoal mb-2">
                         {item.title}
                       </h3>
