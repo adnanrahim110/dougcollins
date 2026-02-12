@@ -183,7 +183,7 @@ export const Header = () => {
                 className="mt-8"
               >
                 <p className="text-[#C6A665]/50 text-xs tracking-[0.2em] uppercase">
-                  © {new Date().getFullYear()} Dough Collins
+                  © {new Date().getFullYear()} Doug Collins
                 </p>
               </motion.div>
             </motion.nav>

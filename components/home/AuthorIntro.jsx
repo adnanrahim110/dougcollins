@@ -180,7 +180,7 @@ export default function AuthorIntro() {
 
             <BlurReveal delay={3}>
               <p className="font-display text-2xl text-charcoal/60 italic">
-                — Dough Collins
+                — Doug Collins
               </p>
             </BlurReveal>
 

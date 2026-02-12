@@ -85,7 +85,7 @@ export default function QuoteSection() {
               <div className="flex items-center gap-3">
                 <div className="w-6 h-px bg-primary-500/30" />
                 <p className="text-fog/50 text-[10px] tracking-[0.3em] uppercase font-semibold">
-                  Dough Collins
+                  Doug Collins
                 </p>
                 <div className="w-6 h-px bg-primary-500/30" />
               </div>
