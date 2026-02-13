@@ -151,8 +151,7 @@ export default function AuthorIntro() {
 
             <BlurReveal delay={1}>
               <Title size="xl" tone="cream">
-                Author
-                <Title.Gradient underline> Spotlight</Title.Gradient>
+                Author <Title.Gradient underline> Spotlight</Title.Gradient>
               </Title>
             </BlurReveal>
 
