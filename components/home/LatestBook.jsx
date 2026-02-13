@@ -124,7 +124,7 @@ export default function LatestBook() {
             <BlurReveal delay={3}>
               <blockquote className="relative pl-5 border-l-2 border-primary-500/20">
                 <p className="text-fog text-base md:text-lg leading-[1.9] font-light italic">
-                  &ldquo;{book.synopsis?.slice(0, 200)}...&rdquo;
+                  &ldquo;{book.synopsis}&rdquo;
                 </p>
               </blockquote>
             </BlurReveal>
