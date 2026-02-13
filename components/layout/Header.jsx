@@ -14,10 +14,6 @@ const links = [
   { label: "Home", href: "/" },
   { label: "Books", href: "/books" },
   { label: "About", href: "/about" },
-  {
-    label: "Audit Findings on Cybersecurity",
-    href: "/audit-findings-on-cybersecurity",
-  },
   { label: "Software Store", href: "/software-store" },
   { label: "Contact", href: "/contact" },
 ];

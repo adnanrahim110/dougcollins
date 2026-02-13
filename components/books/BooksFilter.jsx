@@ -1,6 +1,7 @@
 "use client";
 
 import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
 import { cn } from "@/lib/utils";
 import { Grid3X3, LayoutList, Search, X } from "lucide-react";
 
@@ -9,11 +10,14 @@ export default function BooksFilter({
   setSearch,
   view,
   setView,
+  selectedSeries,
+  setSelectedSeries,
+  seriesOptions = [],
   resultCount,
 }) {
   return (
-    <section className="relative max-w-350 mx-auto px-5 sm:px-8 lg:px-12">
-      <div className="absolute -top-6 right-5 sm:right-8 lg:right-12 bg-primary rounded-2xl p-1 pr-5 backdrop-blur-xs shadow-[0_0_20px_5px] shadow-black/30">
+    <section className="relative z-20 max-w-350 mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="absolute z-50 -top-6 right-5 sm:right-8 lg:right-12 bg-primary rounded-2xl p-1 pr-5 backdrop-blur-xs shadow-[0_0_20px_5px] shadow-black/30">
         <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
           <div className="relative flex-1 max-w-lg">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-smoke pointer-events-none" />
@@ -33,6 +37,17 @@ export default function BooksFilter({
                 <X className="w-3.5 h-3.5 text-smoke" />
               </button>
             )}
+          </div>
+
+          <div className="w-full md:w-60">
+            <Select
+              tone="light"
+              size="md"
+              options={seriesOptions}
+              value={selectedSeries}
+              onChange={(v) => setSelectedSeries?.(v)}
+              placeholder="All Series"
+            />
           </div>
 
           <div className="flex items-center gap-2">

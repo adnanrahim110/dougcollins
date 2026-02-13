@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 export default function Book3D({
   title,
@@ -13,9 +13,17 @@ export default function Book3D({
   widthClassName = "w-64 sm:w-72",
   thickness = 24,
   sizes = "(max-width: 640px) 256px, 288px",
+  aspectRatio,
 }) {
   const bookRef = useRef(null);
   const halfDepth = thickness / 2;
+  const [measuredAspect, setMeasuredAspect] = useState(null);
+
+  const resolvedAspect = useMemo(() => {
+    // Default matches most covers in /public/books, but we override once measured
+    // so the face matches the actual image ratio (no cropping).
+    return aspectRatio ?? measuredAspect ?? 2 / 3;
+  }, [aspectRatio, measuredAspect]);
 
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
@@ -62,8 +70,13 @@ export default function Book3D({
       style={{ perspective: 1200 }}
     >
       <motion.div
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className={cn("relative aspect-2/3 cursor-pointer", widthClassName)}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+          aspectRatio: resolvedAspect,
+        }}
+        className={cn("relative cursor-pointer", widthClassName)}
       >
         <div
           className="absolute inset-0"
@@ -82,8 +95,15 @@ export default function Book3D({
                   src={image}
                   alt={`${title} front cover`}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes={sizes}
+                  onLoadingComplete={(img) => {
+                    if (aspectRatio) return;
+                    if (measuredAspect) return;
+                    const w = img?.naturalWidth ?? 0;
+                    const h = img?.naturalHeight ?? 0;
+                    if (w > 0 && h > 0) setMeasuredAspect(w / h);
+                  }}
                 />
                 <div className="absolute inset-0 bg-linear-to-br from-black/25 via-black/10 to-black/35" />
               </>
@@ -121,8 +141,15 @@ export default function Book3D({
                 src={backImage}
                 alt={`${title} back cover`}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes={sizes}
+                onLoadingComplete={(img) => {
+                  if (aspectRatio) return;
+                  if (measuredAspect) return;
+                  const w = img?.naturalWidth ?? 0;
+                  const h = img?.naturalHeight ?? 0;
+                  if (w > 0 && h > 0) setMeasuredAspect(w / h);
+                }}
               />
             ) : (
               <div className="absolute inset-0 bg-linear-to-br from-[#171522] via-[#221d33] to-[#151225]" />

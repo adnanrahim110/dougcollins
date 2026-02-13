@@ -6,12 +6,7 @@ import Button from "@/components/ui/Button";
 import Title from "@/components/ui/Title";
 import { addToCart, toggleCart } from "@/store/slices/cartSlice";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  FileText,
-  ShoppingBag,
-  Sparkles,
-} from "lucide-react";
+import { ArrowLeft, FileText, ShoppingBag, Sparkles } from "lucide-react";
 import { useDispatch } from "react-redux";
 
 export default function BookDetailHero({ book }) {
@@ -30,12 +25,10 @@ export default function BookDetailHero({ book }) {
     dispatch(toggleCart());
   };
 
-  const meta = [
-    { icon: FileText, label: "Pages", value: book.pages },
-  ];
+  const meta = [{ icon: FileText, label: "Pages", value: book.pages }];
 
   return (
-    <section className="relative bg-ink overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 lg:pt-48 lg:pb-40">
+    <section className="relative bg-ink overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 lg:pt-32 lg:pb-40">
       <div className="grain absolute inset-0 pointer-events-none" />
 
       <div className="absolute top-1/4 left-1/6 w-150 h-150 rounded-full bg-primary-500/5 blur-[200px] pointer-events-none" />
@@ -55,7 +48,7 @@ export default function BookDetailHero({ book }) {
       <div className="max-w-350 mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         <BlurReveal delay={0} preset="fade" trigger="mount">
           <div className="mb-10">
-            <Button href="/books" variant="ghost-light" size="sm">
+            <Button href="/books" variant="ghost" size="sm">
               <ArrowLeft className="w-4 h-4" />
               All Books
             </Button>

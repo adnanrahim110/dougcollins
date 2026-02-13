@@ -5,12 +5,12 @@ import Section from "@/components/ui/Section";
 import Subtitle from "@/components/ui/Subtitle";
 import Title from "@/components/ui/Title";
 import { motion } from "framer-motion";
-import { Award, BookOpen, Code, Globe, Shield, Sparkles } from "lucide-react";
+import { BookOpen, Code, Shield } from "lucide-react";
 
 const expertise = [
   {
     icon: Shield,
-    title: "The Mineral of Silence",
+    title: "Decryption Gambit",
     desc: "A fast-paced techno-thriller that explores quantum science and international intrigue. The discovery of Silentium, a quantum mineral that could disrupt global encryption systems, drives the narrative, exploring the consequences of this discovery and the scramble to control it.",
     tags: ["Cryptography", "Threat Intel", "Architecture"],
   },
@@ -22,15 +22,9 @@ const expertise = [
   },
   {
     icon: BookOpen,
-    title: "The Accord of Shadows",
+    title: "Silent Dominion",
     desc: "Set in a world where a quantum discovery enforces a new world order, this novel explores the quiet manipulation of society through technology. It offers a powerful commentary on how easily personal freedoms can be sacrificed for the sake of societal “peace.”",
     tags: ["Sci-Fi", "Techno-Thriller", "Philosophy"],
-  },
-  {
-    icon: Globe,
-    title: "Consulting & Speaking Engagements",
-    desc: "Doug Collins is also a sought-after consultant and speaker, frequently addressing audiences on topics such as cybersecurity, artificial intelligence, and the ethical implications of technological advancements. Through workshops and keynotes, he engages professionals in discussions about how technology will shape the future of society.",
-    tags: ["Keynotes", "Workshops", "AI Ethics"],
   },
 ];
 

@@ -5,13 +5,26 @@ import Section from "@/components/ui/Section";
 import Subtitle from "@/components/ui/Subtitle";
 import Title from "@/components/ui/Title";
 import { motion } from "framer-motion";
-import { BookOpen, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
+import Image from "next/image";
 
 export default function BookDetailSynopsis({ book }) {
   return (
     <Section tone="light" spacing="lg">
-      <div className="grid lg:grid-cols-[1fr_1.6fr] gap-14 lg:gap-20 items-start">
-        <div className="lg:sticky lg:top-36">
+      <div className="grid lg:grid-cols-[1fr_1.6fr] gap-14 lg:gap-20 items-center">
+        <div>
+          <BlurReveal>
+            <Image
+              src={book.mockupImage}
+              alt={book.title}
+              width={1080}
+              height={1081}
+              className="w-full h-auto"
+            />
+          </BlurReveal>
+        </div>
+
+        <div>
           <BlurReveal>
             <Subtitle tone="dark" line lineWidth={36}>
               About the Book
@@ -19,34 +32,10 @@ export default function BookDetailSynopsis({ book }) {
           </BlurReveal>
 
           <BlurReveal delay={1}>
-            <Title as="h2" size="lg" tone="dark" className="mt-5">
+            <Title as="h2" size="lg" tone="dark" className="mt-5 mb-5">
               {book.aboutTitle || "Synopsis"}
             </Title>
           </BlurReveal>
-
-          <BlurReveal delay={2}>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {book.themes?.map((t) => (
-                <span
-                  key={t}
-                  className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-ink/6 bg-parchment text-[10px] uppercase tracking-[0.18em] text-ink/50 font-semibold"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </BlurReveal>
-
-          <BlurReveal delay={3}>
-            <div className="mt-10 hidden lg:block">
-              <div className="w-14 h-14 rounded-2xl bg-parchment border border-ink/4 flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-ink/10" strokeWidth={1.2} />
-              </div>
-            </div>
-          </BlurReveal>
-        </div>
-
-        <div>
           <BlurReveal delay={1}>
             <div className="relative pl-6 border-l-2 border-primary/20 mb-10">
               <Quote className="absolute -left-3 -top-1 w-5 h-5 text-primary/20" />
