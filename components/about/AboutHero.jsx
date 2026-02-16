@@ -6,6 +6,7 @@ import Subtitle from "@/components/ui/Subtitle";
 import Title from "@/components/ui/Title";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, BookOpen, Fingerprint, Shield } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function AboutHero() {
@@ -45,23 +46,12 @@ export default function AboutHero() {
                 style={{ rotateX, rotateY }}
                 className="relative aspect-3/4 rounded-3xl overflow-hidden bg-charcoal border border-white/6"
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-28 h-28 rounded-full bg-primary-500/10 mx-auto mb-4 flex items-center justify-center border border-primary-500/20">
-                      <span className="text-primary-400 text-5xl font-display font-bold">
-                        D
-                      </span>
-                    </div>
-                    <p className="text-white/20 text-xs uppercase tracking-[0.3em]">
-                      Author Portrait
-                    </p>
-                  </div>
-                </div>
-
-                <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-primary-400/20 rounded-tl-lg" />
-                <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-primary-400/20 rounded-br-lg" />
-
-                <div className="absolute inset-0 bg-linear-to-t from-ink/60 via-transparent to-transparent" />
+                <Image
+                  src="/imgs/author.png"
+                  alt="Doug Collins"
+                  fill
+                  className="object-cover object-top"
+                />
               </motion.div>
 
               <motion.div
