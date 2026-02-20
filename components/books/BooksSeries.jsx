@@ -6,8 +6,9 @@ import Title from "@/components/ui/Title";
 import { getBooksBySeries, series } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 const seriesColors = [
   {
@@ -26,6 +27,118 @@ const seriesColors = [
     border: "border-accent-500/15 hover:border-accent-500/30",
   },
 ];
+
+const COVER_PLACEHOLDER =
+  "data:image/svg+xml;charset=utf-8," +
+  encodeURIComponent(`
+  <svg xmlns="http://www.w3.org/2000/svg" width="400" height="600">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#111827" stop-opacity="0.10"/>
+        <stop offset="1" stop-color="#111827" stop-opacity="0.03"/>
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" rx="18" fill="url(#g)"/>
+    <rect x="40" y="60" width="320" height="24" rx="12" fill="#111827" opacity="0.10"/>
+    <rect x="40" y="100" width="240" height="16" rx="8" fill="#111827" opacity="0.08"/>
+    <rect x="40" y="460" width="220" height="18" rx="9" fill="#111827" opacity="0.07"/>
+    <rect x="40" y="490" width="260" height="12" rx="6" fill="#111827" opacity="0.06"/>
+  </svg>
+`);
+
+const getCoverSrc = (book) =>
+  book.cover ??
+  book.coverUrl ??
+  book.coverImage ??
+  book.image ??
+  book.thumbnail ??
+  book.thumb ??
+  null;
+
+function CoverStack({ books }) {
+  const shown = books.slice(0, 6);
+  const extra = Math.max(0, books.length - shown.length);
+
+  const [active, setActive] = useState(null);
+  const [hovering, setHovering] = useState(false);
+
+  const center = (shown.length - 1) / 2;
+
+  const spring = { type: "spring", stiffness: 220, damping: 24, mass: 0.8 };
+
+  return (
+    <div
+      className="relative w-full overflow-visible"
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => {
+        setHovering(false);
+        setActive(null);
+      }}
+    >
+      <div className="flex w-full items-end justify-center overflow-visible -space-x-7 sm:-space-x-9 md:-space-x-10">
+        {shown.map((book, i) => {
+          const src = getCoverSrc(book) || COVER_PLACEHOLDER;
+
+          const spread = hovering ? 1 : 0.75;
+          const baseX = (i - center) * 10 * spread;
+          const baseRotate = (i - center) * (hovering ? 2.2 : 2.8);
+
+          const isActive = active === i;
+
+          return (
+            <Link
+              key={book.id}
+              href={`/books/${book.id}`}
+              aria-label={`Open ${book.title}`}
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive(null)}
+              className="focus:outline-none"
+            >
+              <motion.div
+                animate={{
+                  x: isActive ? baseX * 1.05 : baseX,
+                  y: isActive ? -16 : 0,
+                  rotate: isActive ? 0 : baseRotate,
+                  scale: isActive ? 1.1 : hovering ? 0.99 : 1,
+                }}
+                transition={spring}
+                style={{
+                  zIndex: isActive ? 200 : 10 + i,
+                  transformOrigin: "bottom center",
+                }}
+                className="relative transform-gpu will-change-transform h-28 sm:h-32 md:h-36 aspect-2/3 w-auto rounded-lg overflow-hidden border border-charcoal/10 bg-paper shadow-sm hover:shadow-xl hover:shadow-charcoal/10"
+              >
+                <img
+                  src={src}
+                  alt={book.title}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+
+                {book.status === "comingSoon" && (
+                  <span className="absolute top-2 right-2 rounded-full bg-secondary-500/15 text-secondary-600 text-[9px] uppercase tracking-wider px-2 py-1">
+                    Soon
+                  </span>
+                )}
+
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-charcoal/10 to-transparent" />
+              </motion.div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {extra > 0 && (
+        <div className="pointer-events-none absolute -bottom-2 right-0">
+          <span className="inline-flex items-center rounded-full bg-charcoal/6 text-charcoal/70 text-[10px] font-semibold px-2.5 py-1">
+            +{extra} more
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function BooksSeries() {
   return (
@@ -48,6 +161,7 @@ export default function BooksSeries() {
               Series
             </Subtitle>
           </BlurReveal>
+
           <BlurReveal delay={0.1}>
             <Title
               as="h2"
@@ -59,9 +173,10 @@ export default function BooksSeries() {
               Explore by <Title.Gradient>Universe</Title.Gradient>
             </Title>
           </BlurReveal>
+
           <BlurReveal delay={0.2}>
             <p className="mt-4 text-smoke text-base max-w-lg mx-auto">
-              Each series is a self-contained universe — interconnected
+              Each series is a self-contained universe, interconnected
               narratives that push the limits of speculative fiction.
             </p>
           </BlurReveal>
@@ -71,9 +186,11 @@ export default function BooksSeries() {
           {series.map((s, i) => {
             const color = seriesColors[i % seriesColors.length];
             const booksInSeries = getBooksBySeries(s.name);
+
             const availableCount = booksInSeries.filter(
               (b) => b.status === "available",
             ).length;
+
             const upcomingCount = booksInSeries.filter(
               (b) => b.status === "comingSoon",
             ).length;
@@ -86,7 +203,7 @@ export default function BooksSeries() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
                 className={cn(
-                  "group relative rounded-2xl bg-paper border p-8 transition-all duration-500 hover:shadow-xl hover:shadow-charcoal/3",
+                  "group relative rounded-2xl bg-paper border p-8 transition-all duration-500 hover:shadow-xl hover:shadow-charcoal/3 overflow-visible",
                   color.border,
                 )}
               >
@@ -116,26 +233,12 @@ export default function BooksSeries() {
                     {s.name}
                   </h3>
 
-                  <p className="text-smoke text-sm leading-relaxed mb-6">
+                  <p className="text-smoke text-sm leading-relaxed mb-7">
                     {s.description}
                   </p>
 
-                  <div className="space-y-2 mb-6">
-                    {booksInSeries.map((book) => (
-                      <Link
-                        key={book.id}
-                        href={`/books/${book.id}`}
-                        className="flex items-center gap-2 text-sm text-charcoal/70 hover:text-primary-600 transition-colors group/link"
-                      >
-                        <ChevronRight className="w-3 h-3 text-primary-400 opacity-0 group-hover/link:opacity-100 transition-opacity" />
-                        <span className="truncate">{book.title}</span>
-                        {book.status === "comingSoon" && (
-                          <span className="text-[9px] uppercase tracking-wider text-secondary-500 font-medium ml-auto shrink-0">
-                            Soon
-                          </span>
-                        )}
-                      </Link>
-                    ))}
+                  <div className="mb-8 w-full overflow-visible">
+                    <CoverStack books={booksInSeries} />
                   </div>
 
                   <div className="flex items-center justify-between pt-4 border-t border-charcoal/5">
@@ -152,6 +255,7 @@ export default function BooksSeries() {
                         </>
                       )}
                     </div>
+
                     <ArrowRight className="w-4 h-4 text-smoke opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                   </div>
                 </div>

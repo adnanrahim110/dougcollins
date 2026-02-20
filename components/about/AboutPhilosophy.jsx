@@ -38,7 +38,7 @@ export default function AboutPhilosophy() {
 
           <BlurReveal delay={1}>
             <Title size="xl" tone="cream" align="center">
-              Key Themes In His{" "}
+              Key Themes in His{" "}
               <Title.Gradient variant="primary" underline>
                 Work
               </Title.Gradient>
